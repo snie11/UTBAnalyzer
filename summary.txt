@@ -1,0 +1,51 @@
+Project Name: Under The Button Recommender System 
+Group Members: Vicky Barth, Selina Nie, Aruna Prasad
+
+Instructions to run:
+•	Run main runner method from ArticleRunner.java
+•	Follow the instructions on the terminal
+	o	If running Question 2, use the name “Lea Eisenstein”, “Shoshi Wintman”, “sophie trotto”, 
+		or “Jonah Weinbaum” as author name examples. More examples can be found if the print 
+		statements are commented out, or any UTB author from the last semester.
+	o	If running Question 3, use the sample article from the bottom of this document.
+
+This project is a mix between an implementation project and an empirical analysis project. 
+We coded a java project that scrapes the Under the Button Facebook page to find the link for 
+the article on the DP  website. It looks at content of the article and metadata (including 
+author name, time, and date posted) and linked it to a .CSV file of pageviews and article 
+reach that we were given access to via The DP staff. We created a recommender system that 
+takes in an article’s text and the author name and outputs several pieces of data: some 
+that predict data (like page views, based on the author, the number of articles that author 
+has written, and the similarity of the article content to other articles) and others that 
+suggest the best time to post an article based on previous articles’ success rates.
+
+We used Document Search (Information Retrieval) to scrape the article and metadata from UTB, 
+and also used it when sorting the data from the .CSV file and matching it with the article 
+content we scraped from the website. Using all this data, we created an object called Article.
+
+We used the advanced topic of Document Similarity to enhance our recommender/predictor model 
+to show how popular the article could be based on the correlation between cosine similarity of 
+articles and page views.
+
+Work breakdown (we switched it up quite a bit from our plan):
+•	Vicky wrote the base code by scraping Facebook and UTB online and pairing the scraped 
+	data with the downloaded raw data we had. She also created the Article class and did 
+	the analysis on what time of day is best to post. Classes/methods written:
+	o	Article.java
+	o	ArticleFinder.java
+	o	ArticleRunner.java
+	o	Time.java (all methods not specified below)
+•	Aruna tackled the cosine similarity problem, taking the top five most similar articles 
+	in terms of content and returning the predicted number of page views. Classes/methods written:
+	o	Used Corpus, VectorSpaceModel, and VectorSpaceModelTester and modified to fit the problem description
+•	Selina wrote the code to predict the average number of views based on the author’s
+	average number of views and based on the regression model. Classes/methods written:
+	o	Author.java
+	o	Time.java -> getAuthorCorrelation method, user input/output of main method
+
+Sample Document:
+
+Not everyone is cool in high school. A lot of students attending elite universities in particular were once quiet and lame, but college changes people— especially Sallie Silverman (C ’21).She has been subtly dropping hints to her friends from home about her new-found coolness. She makes sure shaky footage of crowds doused in colored LED lights populates her Snapchat stories every Friday and Saturday night. She finstas about boys she’s hooking up with, masquerading these stories as funny complaints about the guys. Most importantly, she has been letting her friends know that she drinks.Silverman has posted bottles of Svedka on her story before, and has also complained about hang overs on her finsta. But with Thanksgiving break coming up, she has her biggest-ever opportunity to show her friends what an alcoholic a cool person she is.Instead of studying for her upcoming calc midterm this past week, Silverman has been brushing up on the different brands of alcohol. “Franzia, Smirnoff, Jose Cuervo,” she repeats to herself in the mirror once every morning and once every night.“This is my one chance to show all my friends that I am having the most fun in college. Now they'll think I’m super popular,” Silverman says. “Plus, I want my Princeton friends to know that Penn is the social Ivy, and that I lucked out by not getting in.
+
+
+	
